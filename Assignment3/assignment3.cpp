@@ -24,7 +24,7 @@ struct Edge
 {
     int src, dst, weight;
 };
-Edge E[MAX_N];
+Edge E[MAX_E];
 inline int BellmanFord(int source)
 {
     for (int i=0;i<v;i++)
@@ -50,29 +50,19 @@ inline int BellmanFord(int source)
     if (!done) return -1;
     return 0;
 }
-void prog()
-{
-	while(1)
-	{
-		if (getchar())
-			break;
-	}
-	printf("prog() ends \n");
-}
-
 int main()
 {
 	cin>>v>>e;
+	int start;
+	cin>>start;
     for(int j=0;j<e;j++){
     	cin>>E[j].src>>E[j].dst>>E[j].weight;
     }
-    
-    BellmanFord(0);
+    clock_t t;
+    t = clock();
+    BellmanFord(start);
     for(int i=0;i<v;i++){
     cout<<i<<" "<<dist[i]<<endl;    }
-	clock_t t;
-	t = clock();
-	prog();
 	t = clock() - t;
 	double time_taken = ((double)t)/CLOCKS_PER_SEC; // in seconds
 
